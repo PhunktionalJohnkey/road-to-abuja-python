@@ -13,8 +13,8 @@ jobs:
         mkdir -p ~/.ssh/
         echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
-    - name: Add Host key to known host file
-      run: echo "{{ secrets.AKAMAI_INSTANCE_IP_ADDRESS }} $(ssh-keyscan -H ${secrets.AKAMAI_INSTANCE_IP_ADDRESS})"
+    - name: Set Strict Host Key Checking
+      run: echo "StrictHostKeyChecking=no" > ~/.ssh/config
     - name: Install NGINX
       run: |
         export MY_HOST="${{ secrets.AKAMAI_INSTANCE_IP_ADDRESS }}"
