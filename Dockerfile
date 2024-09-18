@@ -3,7 +3,7 @@ FROM python:3.11.4
 WORKDIR /app
 
 COPY ./src/ /app
-COPY .conf/entrypoint.sh
+COPY ./conf/entrypoint.sh /app/entrypoint.sh
 
 RUN chmod +x /app/entrypoint.sh
 
@@ -16,4 +16,4 @@ RUN /opt/venv/bin/python -m pip install --upgrade pip
 
 RUN /opt/venv/bin/python -m pip install -r requirements.txt
 
-CMD ["entrypoint.sh"]
+CMD ["./entrypoint.sh"]
