@@ -8,4 +8,7 @@ services:
     environment:
       - PORT=8080
     volumes:
-      - ~/PROJECTS/road-to-abuja-python/data:/app/data
+      - phunkytechdata:/app/data
+
+volumes:
+  phunkytechdata
