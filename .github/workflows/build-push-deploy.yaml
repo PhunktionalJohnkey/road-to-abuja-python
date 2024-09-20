@@ -38,7 +38,7 @@ jobs:
         chmod 600 ~/.ssh/id_rsa
     - name: Ensure Docker and Docker Compose are installed on VM
       run: |
-        ssh pass:[\(SSH_OPTS \)]REMOTE << EOF
+        ssh ${{ env.SSH_OPTS }} ${{ env.REMOTE }} << EOF
           if ! command -v docker &> /dev/null; then
             curl -fsSL https://get.docker.com -o get-docker.sh
             sudo sh get-docker.sh
