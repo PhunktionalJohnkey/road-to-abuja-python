@@ -1,0 +1,25 @@
+services:
+  phunkytech-nginx-svc:
+    image: nginx
+  phunkytech-web-svc:
+    image: naijaautomator1/phunkytech-python:${TAG:-latest}
+    build:
+      context: .
+      dockerfile: Dockerfile
+      tags:
+        - "naijaautomator1/phunkytech-python:${TAG:-latest}"
+    ports:
+      - "8080:8080"
+    env_file:
+      - .env
+    environment:
+      - PORT=8080
+    volumes:
+      - phunkytechdata:/app/data
+  phunkytech-redis-svc:
+    image: redis
+    volumes: 
+      - phunkytechredisdata:/data
+volumes:
+  phunkytechdata:
+  phunkytechredisdata:
