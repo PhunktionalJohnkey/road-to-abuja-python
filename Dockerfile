@@ -8,7 +8,8 @@ COPY ./conf/entrypoint.sh /app/entrypoint.sh
 RUN chmod +x /app/entrypoint.sh
 
 RUN apt-get update && \
-    apt-get install -y python3-venv python3-dev python3-pip
+    apt-get install -y python3-venv python3-dev python3-pip && \
+    apt-get install -y redis-tool
 
 RUN python3 -m venv /opt/venv
 
