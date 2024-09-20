@@ -1,4 +1,6 @@
 services:
+  phunkytech-nginx-svc:
+    image: nginx
   web:
     build:
       context: .
