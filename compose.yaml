@@ -11,6 +11,10 @@ services:
       - PORT=8080
     volumes:
       - phunkytechdata:/app/data
-
+  phunkytech-redis-svc:
+    image: redis
+    volumes: 
+      - phunkytechredisdata:/data
 volumes:
   phunkytechdata:
+  phunkytechredisdata:
