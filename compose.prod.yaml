@@ -5,7 +5,7 @@ services:
     image: naijaautomator1/phunkytech-python:${TAG:-latest}
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.prod
       tags:
         - "naijaautomator1/phunkytech-python:${TAG:-latest}"
     ports:
