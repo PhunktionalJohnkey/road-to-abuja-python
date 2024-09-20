@@ -1,7 +1,7 @@
 services:
   phunkytech-nginx-svc:
     image: nginx
-  web:
+  phunkytech-web-svc:
     build:
       context: .
       dockerfile: Dockerfile
