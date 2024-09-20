@@ -11,4 +11,4 @@ services:
       - phunkytechdata:/app/data
 
 volumes:
-  phunkytechdata
+  phunkytechdata:
