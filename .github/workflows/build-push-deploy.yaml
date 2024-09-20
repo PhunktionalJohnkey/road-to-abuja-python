@@ -48,4 +48,9 @@ jobs:
             sudo apt-get install docker-compose-plugin
           fi
         EOF
-            
+     
+    - name: Login to Docker Hub on VM
+      run: |
+        ssh ${{ env.SSH_OPTS }} ${{ env.REMOTE }} << EOF
+          echo "${{ secrets.DOCKERHUB_PASSWORD }}" | docker login -u "${{ env.DH_USER }}" --passowrd-stdin  
+        EOF          
