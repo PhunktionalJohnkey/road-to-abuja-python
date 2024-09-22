@@ -51,9 +51,8 @@ jobs:
      
     - name: Login to Docker Hub on VM
       run: |
-        ssh ${{ env.SSH_OPTS }} ${{ env.REMOTE }} <<EOF
-          echo "${{ secrets.DOCKERHUB_PASSWORD }}" | docker login -u "${{ env.DH_USER }}" --password-stdin  
-        EOF   
+        ssh ${{ env.SSH_OPTS }} ${{ env.REMOTE }} echo "${{ secrets.DOCKERHUB_PASSWORD }}" | docker login -u "${{ env.DH_USER }}" --password-stdin  
+
     - name: Create .env file
       run: |
         echo "PHUNKYTECH_SECRET_KEY=${{ secrets.PHUNKYTECH_SECRET_KEY }}" >> .env
