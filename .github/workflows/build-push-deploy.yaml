@@ -64,7 +64,7 @@ jobs:
 
     - name: Copy GitHub Actions .env file to Remote VM
       run: |
-        scp -o StrictHostKeyChecking=no .env ${{ secrets.SSH_USER }}@${{ secrets.REMOTE_HOST }}:${{ $REMOTE_APP_DIR }}/.env
+        scp -o StrictHostKeyChecking=no .env ${{ secrets.SSH_USER }}@${{ secrets.REMOTE_HOST }}:${{ env.REMOTE_APP_DIR }}/.env
 
     - name: Copy compose.prod.yaml to VM
       run: |
