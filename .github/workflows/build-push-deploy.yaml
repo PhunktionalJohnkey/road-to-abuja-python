@@ -72,14 +72,14 @@ jobs:
 
     - name: Pull updated images
       run: |
-        ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.REMOTE_HOST }} << EOF
+        ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ env.REMOTE }} << EOF
           cd $REMOTE_APP_DIR
           docker compose pull
         EOF
 
     - name: Run Docker Compose
       run: |
-        ssh -o StrictHostKKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.REMOTE_HOST }} << EOF
+        ssh -o StrictHostKKeyChecking=no ${{ secrets.SSH_USER }}@${{ env.REMOTE }} << EOF
           cd $REMOTE_APP_DIR
           # Run containers
           docker compose up -d
