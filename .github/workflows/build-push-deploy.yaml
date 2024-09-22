@@ -58,17 +58,17 @@ jobs:
         echo "PHUNKYTECH_SECRET_KEY=${{ secrets.PHUNKYTECH_SECRET_KEY }}" >> .env
         echo "API_ENDPOINT=${{ secrets.API_ENDPOINT }}" >> .env
 
-#    - name: Ensure remote directory exists
-#      run: |
-#        ssh  ${{ secrets.SSH_USER }}@${{ secrets.REMOTE_HOST }} "mkdir -p ${{ env.REMOTE_APP_DIR }}"
+    - name: Ensure remote directory exists
+      run: |
+        ssh  ${{ env.SSH_OPTS }} ${{ env.REMOTE }} "mkdir -p ${{ env.REMOTE_APP_DIR }}"
 
     - name: Copy GitHub Actions .env file to Remote VM
       run: |
-        scp -o StrictHostKeyChecking=no .env ${{ secrets.SSH_USER }}@${{ secrets.REMOTE_HOST }}:${{ env.REMOTE_APP_DIR }}/.env
+        scp ${{ env.SSH_OPTS }} .env ${{ env.REMOTE }}:${{ env.REMOTE_APP_DIR }}/.env
 
     - name: Copy compose.prod.yaml to VM
       run: |
-        scp -o StrictHostKeyChecking=no compose.prod.yaml ${{ secrets.SSH_USER }}@${{ secrets.REMOTE_HOST }}:$REMOTE_APP_DIR/compose.yaml
+        scp ${{ env.SSH_OPTS }} compose.prod.yaml ${{ env.REMOTE }}:${{ env.REMOTE_APP_DIR }}/compose.yaml
 
     - name: Pull updated images
       run: |
