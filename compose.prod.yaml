@@ -1,15 +1,9 @@
 services:
-  phunkytech-nginx-svc:
-    image: nginx
   phunkytech-web-svc:
+    restart: always
     image: naijaautomator1/phunkytech-python:${TAG:-latest}
-    build:
-      context: .
-      dockerfile: Dockerfile.prod
-      tags:
-        - "naijaautomator1/phunkytech-python:${TAG:-latest}"
     ports:
-      - "8080:8080"
+      - "80:8080"
     env_file:
       - .env
     environment:
