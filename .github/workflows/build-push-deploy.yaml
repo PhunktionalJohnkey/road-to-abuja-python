@@ -57,9 +57,10 @@ jobs:
       run: |
         echo "PHUNKYTECH_SECRET_KEY=${{ secrets.PHUNKYTECH_SECRET_KEY }}" >> .env
         echo "API_ENDPOINT=${{ secrets.API_ENDPOINT }}" >> .env
+
     - name: Ensure remote directory exists
       run: |
-        ssh ${{ secrets.SSH_USER }}@${{ secrets.REMOTE_HOST }} 'mkdir -p $REMOTE_APP_DIR'
+        ssh -o StrictHostKeyChecking=no  ${{ secrets.SSH_USER }}@${{ secrets.REMOTE_HOST }} 'mkdir -p $REMOTE_APP_DIR'
 
     - name: Copy GitHub Actions .env file to Remote VM
       run: |
