@@ -53,7 +53,7 @@ jobs:
       run: |
         ssh ${{ env.SSH_OPTS }} ${{ env.REMOTE }} << EOF
           echo "${{ secrets.DOCKERHUB_PASSWORD }}" | docker login -u "${{ env.DH_USER }}" --password-stdin  
-        EOF   
+      EOF   
 
     - name: Create .env file
       run: |
