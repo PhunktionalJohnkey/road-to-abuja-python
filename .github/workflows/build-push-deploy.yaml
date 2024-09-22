@@ -60,7 +60,7 @@ jobs:
 
     - name: Ensure remote directory exists
       run: |
-        ssh -o StrictHostKeyChecking=no  ${{ secrets.SSH_USER }}@${{ secrets.REMOTE_HOST }} 'mkdir -p ${{ env.REMOTE_APP_DIR }}'
+        ssh -o StrictHostKeyChecking=no  ${{ secrets.SSH_USER }}@${{ secrets.REMOTE_HOST }} "mkdir -p ${{ env.REMOTE_APP_DIR }}"
 
     - name: Copy GitHub Actions .env file to Remote VM
       run: |
