@@ -72,7 +72,7 @@ jobs:
 
     - name: Pull updated images
       run: |
-        ssh ${{ env.SSH_OPTS }} ${{ env.REMOTE }} "cd ${{ env.$REMOTE_APP_DIR }} && docker compose pull"
+        ssh ${{ env.SSH_OPTS }} ${{ env.REMOTE }} "cd ${{ env.REMOTE_APP_DIR }} && docker compose pull"
 
     - name: Run Docker Compose
       run: |
